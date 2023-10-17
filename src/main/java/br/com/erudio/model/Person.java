@@ -4,7 +4,9 @@ import br.com.erudio.controllers.PersonController;
 
 import java.io.Serializable;
 import java.util.Objects;
+import jakarta.persistence.Table;
 
+@Entity
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
