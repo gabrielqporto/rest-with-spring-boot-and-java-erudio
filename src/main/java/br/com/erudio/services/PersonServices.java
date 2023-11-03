@@ -34,15 +34,20 @@ public class PersonServices {
         var entity = repository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
         
-        entity.setFirstName("Gabriel");
-        entity.setLastName("Porto");
-        entity.setAddress("Guarulhos - São Paulo - Brasil");
-        entity.setGender("Male");
+        entity.setFirstName(person.getFirstName());
+        entity.setLastName(person.getLastName());
+        entity.setAddress(person.getAddress());
+        entity.setGender(person.getGender());
 
         return repository.save(person);
     }
-    public void delete(String id) {
+    public void delete(Long id) {
         logger.info("Deleting one person!");
+
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+
+        repository.delete(entity);
     }
 
     public Person findById(Long id) {
@@ -51,15 +56,5 @@ public class PersonServices {
 
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-    }
-
-    private Person mockPerson(int i) {
-        Person person = new Person();
-        person.setId((counter.incrementAndGet()));
-        person.setFirstName("Person name: " + i);
-        person.setLastName("Last name: " + i);
-        person.setAddress("Some address in Brazil: " + i);
-        person.setGender("Male");
-        return person;
     }
 }
