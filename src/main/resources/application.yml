@@ -5,6 +5,7 @@ spring:
     username: root
     password: 2+2 Drumdrummer mysql
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: update
       properties:

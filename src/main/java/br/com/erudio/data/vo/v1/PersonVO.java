@@ -1,13 +1,12 @@
-package br.com.erudio.model;
+package br.com.erudio.data.vo.v1;
 
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable {
+
+public class PersonVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -67,7 +66,7 @@ public class Person implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
+        PersonVO person = (PersonVO) o;
         return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
     }
 
